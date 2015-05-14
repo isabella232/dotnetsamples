@@ -265,7 +265,7 @@ namespace Microsoft.Diagnostics.Runtime.Desktop
         #endregion
     }
 
-    class NativeMethods
+    public class NativeMethods
     {
         public static bool LoadNative(string dllName)
         {
@@ -278,7 +278,7 @@ namespace Microsoft.Diagnostics.Runtime.Desktop
 
         // Call CloseHandle to clean up.
         [DllImport(Kernel32LibraryName, SetLastError = true)]
-        public static extern SafeWin32Handle CreateFileMapping(
+        internal static extern SafeWin32Handle CreateFileMapping(
            SafeFileHandle hFile,
            IntPtr lpFileMappingAttributes, PageProtection flProtect, uint dwMaximumSizeHigh,
            uint dwMaximumSizeLow, string lpName);
@@ -289,7 +289,7 @@ namespace Microsoft.Diagnostics.Runtime.Desktop
 
 
         [DllImport(Kernel32LibraryName, SetLastError = true)]
-        public static extern SafeMapViewHandle MapViewOfFile(SafeWin32Handle hFileMappingObject, uint
+        internal static extern SafeMapViewHandle MapViewOfFile(SafeWin32Handle hFileMappingObject, uint
            dwDesiredAccess, uint dwFileOffsetHigh, uint dwFileOffsetLow,
            IntPtr dwNumberOfBytesToMap);
 
@@ -358,7 +358,7 @@ namespace Microsoft.Diagnostics.Runtime.Desktop
         public static short IMAGE_DIRECTORY_ENTRY_COM_DESCRIPTOR = 14;
 
         [DllImport("dbgeng.dll")]
-        internal static extern uint DebugCreate(ref Guid InterfaceId, [MarshalAs(UnmanagedType.IUnknown)] out object Interface);
+        public static extern uint DebugCreate(ref Guid InterfaceId, [MarshalAs(UnmanagedType.IUnknown)] out object Interface);
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]
         internal delegate int CreateDacInstance([In, ComAliasName("REFIID")] ref Guid riid,
                                        [In, MarshalAs(UnmanagedType.Interface)] IDacDataTarget data,

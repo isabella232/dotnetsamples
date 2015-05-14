@@ -171,7 +171,7 @@ namespace Microsoft.Diagnostics.Runtime.Interop
 
         [PreserveSig]
         new int SetOutputCallbacks(
-            [In] IntPtr Callbacks);
+            [In] IDebugOutputCallbacks Callbacks);
 
         [PreserveSig]
         new int GetOutputMask(
@@ -231,7 +231,7 @@ namespace Microsoft.Diagnostics.Runtime.Interop
 
         [PreserveSig]
         new int SetEventCallbacks(
-            [In] IntPtr Callbacks);
+            [In] IDebugEventCallbacks Callbacks);
 
         [PreserveSig]
         new int FlushCallbacks();

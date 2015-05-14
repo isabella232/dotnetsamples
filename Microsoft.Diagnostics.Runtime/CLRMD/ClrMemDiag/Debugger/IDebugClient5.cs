@@ -171,7 +171,7 @@ namespace Microsoft.Diagnostics.Runtime.Interop
 
         [PreserveSig]
         new int SetOutputCallbacks(
-            [In] IntPtr Callbacks);
+            [In] IDebugOutputCallbacks Callbacks);
 
         [PreserveSig]
         new int GetOutputMask(
@@ -231,7 +231,7 @@ namespace Microsoft.Diagnostics.Runtime.Interop
 
         [PreserveSig]
         new int SetEventCallbacks(
-            [In] IntPtr Callbacks);
+            [In] IDebugEventCallbacks Callbacks);
 
         [PreserveSig]
         new int FlushCallbacks();
@@ -396,7 +396,7 @@ namespace Microsoft.Diagnostics.Runtime.Interop
 
         [PreserveSig]
         int SetOutputCallbacksWide(
-            [In] IntPtr Callbacks);
+            [In] IDebugOutputCallbacksWide Callbacks);
 
         [PreserveSig]
         int GetOutputLinePrefixWide(
@@ -430,7 +430,7 @@ namespace Microsoft.Diagnostics.Runtime.Interop
 
         [PreserveSig]
         int SetEventCallbacksWide(
-            [In] IntPtr Callbacks);
+            [In] IDebugEventCallbacksWide Callbacks);
 
         [PreserveSig]
         int CreateProcess2(
